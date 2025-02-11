@@ -22,7 +22,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <header className="flex justify-center items-center h-10">
+          <nav>My navbar</nav>
+        </header>
+        <main>{children}</main>
+        <footer className="flex justify-center items-center h-10">© 2025 My Site</footer>
       </body>
     </html>
   );
