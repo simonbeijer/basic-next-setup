@@ -9,6 +9,8 @@ services:
       - /app/node_modules
     environment:
       - DATABASE_URL=postgresql://simon:S1m0n@postgres:5432/basicdb
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
     depends_on:
       - postgres
     command: ["npm", "run", "dev"]

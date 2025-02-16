@@ -14,7 +14,16 @@ export default function Login() {
         body: JSON.stringify({email, password}),
         headers: { "Content-Type": "application/json" },
       });
-      console.log(response);
+      const data = await response.json();
+      if(data.ok) {
+
+        const message = data.message;  // Access the message
+        const user = data.user;      // Access the user object
+        console.log(message, user)
+      } else {
+        const message = data.message;  // Access the message
+        console.log(message)
+      }
     } catch (error) {
       console.error(error);
     }
