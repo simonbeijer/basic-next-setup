@@ -11,18 +11,17 @@ export default function Login() {
     try {
       const response = await fetch("api/auth/login", {
         method: "POST",
-        body: JSON.stringify({email, password}),
+        body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
       });
       const data = await response.json();
-      if(data.ok) {
-
-        const message = data.message;  // Access the message
-        const user = data.user;      // Access the user object
-        console.log(message, user)
+      if (data.ok) {
+        const message = data.message; // Access the message
+        const user = data.user; // Access the user object
+        console.log(message, user);
       } else {
-        const message = data.message;  // Access the message
-        console.log(message)
+        const message = data.message; // Access the message
+        console.log(message);
       }
     } catch (error) {
       console.error(error);
@@ -30,8 +29,11 @@ export default function Login() {
   };
 
   return (
-    <form action={handleSubmit} className="text-[var(--background)]">
-      <div className="flex items-center justify-center min-h-screen flex-col gap-8">
+    <div className="flex items-center justify-center min-h-screen flex-col">
+      <form
+        action={handleSubmit}
+        className="text-[var(--background)] flex items-center justify-center flex-col gap-8"
+      >
         <input
           type="email"
           name="email"
@@ -52,7 +54,7 @@ export default function Login() {
         >
           LOGIN
         </button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
