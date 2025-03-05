@@ -14,14 +14,11 @@ export default function Login() {
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
       });
-      const data = await response.json();
-      if (data.ok) {
-        const message = data.message; // Access the message
-        const user = data.user; // Access the user object
-        console.log(message, user);
+
+      if (response.ok) {
+        window.location.href = "/dashboard";
       } else {
-        const message = data.message; // Access the message
-        console.log(message);
+        console.log("error login")
       }
     } catch (error) {
       console.error(error);
