@@ -1,11 +1,16 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation"; 
+import { useUserContext } from "../context/userContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useUserContext();
+  const router = useRouter();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     console.log(email, password);
 
     try {
@@ -16,9 +21,12 @@ export default function Login() {
       });
 
       if (response.ok) {
-        window.location.href = "/dashboard";
+        const data = await response.json();
+        setUser(data.user);
+        console.log("LOGIN REPONSE", response);
+        router.push("/dashboard")
       } else {
-        console.log("error login")
+        console.log("error login");
       }
     } catch (error) {
       console.error(error);
@@ -28,7 +36,7 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen flex-col">
       <form
-        action={handleSubmit}
+        onSubmit={handleSubmit}
         className="text-[var(--background)] flex items-center justify-center flex-col gap-8"
       >
         <input
