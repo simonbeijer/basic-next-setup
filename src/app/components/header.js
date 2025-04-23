@@ -1,11 +1,19 @@
 "use client";
+import { useRouter } from "next/navigation";
+import { useUserContext } from "../context/userContext";
+import Dropdown from "./dropdown";
 export default function Header() {
+  const { user, setUser } = useUserContext();
+  const router = useRouter();
+
   const logoutUser = async () => {
     try {
       const response = await fetch("/api/auth/logout", { method: "POST" });
 
       if (response.ok) {
-        window.location.href = "/login";
+        const data = response.json();
+        setUser(null);
+        router.push("/login");
       } else {
         console.log("response logout error", response);
       }
@@ -19,7 +27,7 @@ export default function Header() {
       <nav className="absolute left-1/2 transform -translate-x-1/2">
         My navbar
       </nav>
-      <button onClick={logoutUser}>LOGOUT</button>
+      <div>{user && <Dropdown logoutUser={logoutUser} user={user} />}</div>
     </header>
   );
 }
