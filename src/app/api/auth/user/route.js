@@ -5,7 +5,9 @@ import * as jose from "jose";
 const SECRET = process.env.JWT_SECRET;
 
 export async function GET() {
-  const token = cookies().get("token")?.value;
+  const cookieStore = cookies();
+  const token = cookieStore.get("token")?.value;
+
   if (!token) {
     return NextResponse.json({ user: null }, { status: 401 });
   }
