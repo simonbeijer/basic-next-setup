@@ -22,7 +22,7 @@ export default function Header() {
     }
   };
   return (
-    <header className="relative flex justify-between items-center h-10 px-4">
+    <header className="relative flex justify-between items-center h-12 px-4">
       <div />
       <nav className="absolute left-1/2 transform -translate-x-1/2">
         My navbar
