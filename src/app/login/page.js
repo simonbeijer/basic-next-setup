@@ -60,27 +60,37 @@ export default function Login() {
         className="text-[var(--background)] flex items-center justify-center flex-col"
       >
         {loading ? (
-          <div className="h-[120px]">
+          <div className="h-[168px]">
             <Spinner />
           </div>
         ) : (
           <div className="flex items-center justify-center flex-col">
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter Email"
-              className="mb-4"
-            />
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
-              className="mb-4"
-            />
+            <div className="flex flex-col">
+              <label htmlFor="email" className="text-[var(--foreground)] pl-[2px]">
+                Email:
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter Email"
+                className="mb-4"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="password" className="text-[var(--foreground)] pl-[2px]">
+                Password:
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+                className="mb-4"
+              />
+            </div>
             <p
               className={`text-red-400 mb-4 ${
                 error ? "visable" : "invisible"
