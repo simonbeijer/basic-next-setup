@@ -1,0 +1,50 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: simon
+          POSTGRES_PASSWORD: S1m0n
+          POSTGRES_DB: basicdb
+        options: >-
+          --health-cmd="pg_isready -U simon" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Seed database
+        run: npx prisma db seed
+
+      - name: Run Cypress tests
+        run: npm run test:cypress
+        env:
+          DATABASE_URL: postgresql://simon:S1m0n@localhost:5432/basicdb
