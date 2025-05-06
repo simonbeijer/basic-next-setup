@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useUserContext } from "../context/userContext";
 import Dropdown from "./dropdown";
+
 export default function Header() {
   const { user, setUser } = useUserContext();
   const router = useRouter();
@@ -27,7 +28,9 @@ export default function Header() {
       <nav className="absolute left-1/2 transform -translate-x-1/2">
         My navbar
       </nav>
-      <div>{user && <Dropdown logoutUser={logoutUser} user={user} />}</div>
+      <div>
+          <Dropdown logoutUser={logoutUser} user={user} />
+      </div>
     </header>
   );
 }

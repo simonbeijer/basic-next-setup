@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useUserContext } from "../context/userContext";
-import Spinner from "../components/spinner";
+import { useUserContext } from "../../context/userContext";
+import Spinner from "../../components/spinner";
 
 export default function Login() {
   const [email, setEmail] = useState("");
