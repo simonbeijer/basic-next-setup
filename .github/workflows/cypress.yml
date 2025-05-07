@@ -48,12 +48,9 @@ jobs:
             sleep 1
           done
       
-
       - name: Seed database
-        run: npx prisma db seed
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
+        run: DATABASE_URL="postgresql://simon:S1m0n@postgres:5432/basicdb" npx prisma db seed
+        
       - name: Run Cypress tests
         run: npm run test:cypress
         env:
