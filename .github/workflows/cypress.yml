@@ -58,6 +58,14 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
+      - name: Start Next.js and wait for it
+        run: |
+          npm run dev &                                    # launch Next.js
+          until curl --silent --head http://localhost:3000 | grep "200 OK"; do
+            echo "Waiting for app…"
+            sleep 2
+          done
+
       - name: Run Cypress tests
         run: npm run test:e2e
         env:
