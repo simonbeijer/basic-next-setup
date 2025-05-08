@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres:15
@@ -46,6 +47,11 @@ jobs:
             nc -z localhost 5432 && echo "Postgres is up!" && break
             sleep 2
           done
+
+      - name: Apply Prisma Migrations
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Seed database
         run: npx prisma db seed
