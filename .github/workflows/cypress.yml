@@ -59,6 +59,6 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Run Cypress tests
-        run: npm run test:cypress
+        run: npm run test:e2e
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
