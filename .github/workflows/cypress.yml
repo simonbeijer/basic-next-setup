@@ -41,9 +41,13 @@ jobs:
 
       - name: Wait for Postgres
         run: |
+          echo "Waiting for Postgres..."
           for i in {1..15}; do
-            echo "Waiting for Postgres..."
-            nc -z postgres 5432 && echo "Postgres is ready!" && break
+            echo "Attempt $i"
+            if nc -z postgres 5432 && PGPASSWORD=S1m0n psql -h postgres -U simon -d basicdb -c 'SELECT 1' > /dev/null 2>&1; then
+              echo "Postgres is ready!"
+              break
+            fi
             sleep 2
           done
 
