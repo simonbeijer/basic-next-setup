@@ -13,6 +13,7 @@ export default function Header() {
 
       if (response.ok) {
         const data = response.json();
+        console.log(data)
         setUser(null);
         router.push("/login");
       } else {

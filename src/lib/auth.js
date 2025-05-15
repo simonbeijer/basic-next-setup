@@ -12,6 +12,6 @@ export async function verifyAuth(token) {
     );
     return payload;
   } catch (err) {
-    throw new Error("Invalid or expired token");
+    throw new Error("Invalid or expired token", err);
   }
 }
