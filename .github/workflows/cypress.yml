@@ -25,6 +25,10 @@ jobs:
           --health-timeout=5s
           --health-retries=5
 
+    env:
+      DATABASE_URL: "postgresql://simon:S1m0n@postgres:5432/basicdb"
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -43,32 +47,22 @@ jobs:
       - name: Wait for Postgres
         run: |
           for i in {1..15}; do
-            echo "Waiting for Postgres on localhost:5432…"
-            nc -z localhost 5432 && echo "Postgres is up!" && break
+            nc -z localhost 5432 && break
             sleep 2
           done
 
       - name: Push Prisma schema
         run: npx prisma db push --accept-data-loss
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Seed database
         run: npx prisma db seed
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Start Next.js and wait for it
         run: |
-          npm run dev &                                    # launch Next.js
-          until curl --silent --head http://localhost:3000 | grep "200 OK"; do
-            echo "Waiting for app…"
+          npm run dev &           # now has DATABASE_URL + JWT_SECRET
+          until curl -sI http://localhost:3000 | grep "200 OK"; do
             sleep 2
           done
 
       - name: Run Cypress tests
         run: npm run test:e2e
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
