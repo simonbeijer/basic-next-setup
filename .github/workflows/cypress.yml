@@ -21,7 +21,7 @@ jobs:
           POSTGRES_DB: basicdb
         options: >-
           --health-cmd="pg_isready -U simon"
-          --health-interval=10s
+          --health-interval=10ss
           --health-timeout=5s
           --health-retries=5
 
