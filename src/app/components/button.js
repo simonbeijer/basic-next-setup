@@ -7,3 +7,6 @@ export default function CustomButton({text, callBack}){
 
     );
 };
+
+// Add size, type(rounded)
+// Set default
