@@ -7,9 +7,7 @@ export default function Dashboard() {
       <Sidebar />
       <div className="flex flex-1 items-center justify-center bg-gray-100">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-          <WeatherWidget>
-
-          </WeatherWidget>
+          <WeatherWidget />
         </div>
       </div>
     </div>
