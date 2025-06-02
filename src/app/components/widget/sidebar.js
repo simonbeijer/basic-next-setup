@@ -1,16 +1,27 @@
 "use client";
+export default function Sidebar({ selectedWidget, setSelectedWidget }) {
+  const widgetItems = ["Weather", "Stonks", "Cool shit"];
 
-export default function Sidebar() {
-  const widgetItems = ["Weater", "Stonks", "Cool shit"];
-  return(
-  <aside className="w-64 bg-white shadow p-4 text-[var(--background)]">
-  <ul>
-    {widgetItems.map((item, index) => (
-        <li key={index}>
-            {item}
-        </li>
-    ))}
-  </ul>
-  </aside>
+  const setWidgetItem = (index) => {
+    let newItem = widgetItems[index];
+    setSelectedWidget(newItem);
+    console.log(selectedWidget);
+  };
+
+  return (
+    <aside className="w-64 bg-white shadow p-4 text-[var(--background)]">
+      <ul>
+        {widgetItems.map((item, index) => (
+          <li key={index}>
+            <button
+              onClick={() => setWidgetItem(index)}
+              className={item === selectedWidget ? "font-bold" : ""}
+            >
+              {item}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </aside>
   );
 }
