@@ -9,13 +9,15 @@ export default function Sidebar({ selectedWidget, setSelectedWidget }) {
   };
 
   return (
-    <aside className="w-64 bg-white shadow p-4 text-[var(--background)]">
-      <ul>
+    <aside className="w-48 bg-white shadow p-4 text-[var(--background)] flex items-center justify-center">
+      <ul className="w-32">
         {widgetItems.map((item, index) => (
-          <li key={index}>
+          <li key={index} className="m-4">
             <button
               onClick={() => setWidgetItem(index)}
-              className={item === selectedWidget ? "font-bold" : ""}
+              className={`bg-slate-400 p-2 min-w-full rounded ${
+
+              item === selectedWidget ? "font-bold bg-slate-600" : ""}`}
             >
               {item}
             </button>
