@@ -5,6 +5,17 @@ import Sidebar from "@/app/components/widget/sidebar";
 export default function Dashboard() {
   const [selectedWidget, setSelectedWidget] = useState("Weather");
 
+  let content = <WeatherWidget />;
+  if (selectedWidget === "Weater") {
+    content = <WeatherWidget />;
+  } else if (selectedWidget === "Stonks") {
+    content = <div className="text-[var(--background)]">Stonks</div>;
+  } else if (selectedWidget === "Cool shit") {
+    content = <div className="text-[var(--background)]">Cool shit</div>;
+  } else {
+    content = <WeatherWidget />;
+  }
+
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="flex min-h-screen p-8">
@@ -14,7 +25,7 @@ export default function Dashboard() {
         />
         <div className="flex flex-1 items-center justify-center bg-gray-100">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-            <WeatherWidget />
+            {content}
           </div>
         </div>
       </div>
