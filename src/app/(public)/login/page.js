@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "../../context/userContext";
 import Spinner from "../../components/spinner";
+import InputField from "@/app/components/inputField";
 
 export default function Login() {
+  const [test, setTest] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -65,32 +67,24 @@ export default function Login() {
           </div>
         ) : (
           <div className="flex items-center justify-center flex-col">
-            <div className="flex flex-col">
-              <label htmlFor="email" className="text-[var(--foreground)] pl-[2px]">
-                Email:
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter Email"
-                className="mb-4"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="password" className="text-[var(--foreground)] pl-[2px]">
-                Password:
-              </label>
-              <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-                className="mb-4"
-              />
-            </div>
+            <InputField
+              name="email"
+              type="email"
+              value={email}
+              onChange={setEmail}
+              placeholder="Enter email"
+              error="error"
+              label="Email:"
+            />
+            <InputField
+              name="password"
+              type="password"
+              value={password}
+              onChange={setPassword}
+              placeholder="Enter password"
+              error="error"
+              label="Password:"
+            />
             <p
               className={`text-red-400 mb-4 ${
                 error ? "visable" : "invisible"
