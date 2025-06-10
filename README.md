@@ -1,50 +1,61 @@
-Next.js Fullstack Template
-This template sets up a Next.js app with a PostgreSQL database, using Prisma to manage data. It uses Docker for easy setup, Jest for testing, Cypress for end-to-end tests, and Tailwind CSS for styling.
+# Next.js Fullstack Template
 
-Get Started
-You'll need Node.js (v18+), npm, and Docker.
+This is a fullstack starter template featuring Next.js with a PostgreSQL database managed by Prisma. It includes Docker for easy containerized setup, Jest for testing, Cypress for end-to-end tests, and Tailwind CSS for styling—helping you quickly build modern, scalable web apps.
 
-1. Set Up Environment
-Create a .env file in the main folder with your database connection.
+
+## Get Started
+
+Make sure you have Node.js (v18+), npm, and Docker installed.
+
+## Set Up Environment
+
+Create a `.env` file in the project root with your database connection string:
 
 DATABASE_URL="postgresql://simon:S1m0n@postgres:5432/basicdb"
-2. Prepare Database
-Start PostgreSQL and set up your database.
 
-Bash
+## Prepare Database
 
-# Start the database
+Start the PostgreSQL service:
+
 docker compose up -d postgres
 
-# Generate Prisma client and apply changes
-npm run prisma:generate
+Generate Prisma client and apply migrations:
+
+npm run prisma:generate  
 npx prisma migrate dev --name init
 
-# (Optional) Add starting data
+(Optional) Seed the database:
+
 npm run seed
-3. Run the App
-Start the Next.js app.
 
-Bash
+## Run the App
 
-# Using Docker Compose
+Start the Next.js application:
+
+Using Docker Compose:  
 docker compose up nextjs
 
-# Or directly (if not using Docker for the app)
+Or directly (if not using Docker for the app):  
 npm run dev
-Visit http://localhost:3000 in your browser.
 
-Key Commands
-npm run dev: Start development server.
-npm run build: Build for production.
-npm run start: Start production server.
-npm test: Run unit/integration tests.
-npm run test:e2e: Run end-to-end tests.
-npm run prisma:generate: Update Prisma client.
-npm run seed: Run database seed script.
-More Info
-Next.js Docs
-Prisma Docs
-Docker Docs
-Deployment
+Visit `http://localhost:3000` in your browser.
+
+## Key Commands
+
+- `npm run dev` — Start development server  
+- `npm run build` — Build for production  
+- `npm run start` — Start production server  
+- `npm test` — Run unit/integration tests  
+- `npm run test:e2e` — Run end-to-end tests  
+- `npm run prisma:generate` — Update Prisma client  
+- `npm run seed` — Run database seed script  
+
+## More Info
+
+- [Next.js Docs](https://nextjs.org/docs)  
+- [Prisma Docs](https://www.prisma.io/docs)  
+- [Docker Docs](https://docs.docker.com)  
+
+## Deployment
+
 This project is set up for easy deployment to Vercel.
