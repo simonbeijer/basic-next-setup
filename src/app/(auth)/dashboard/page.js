@@ -2,11 +2,13 @@
 import { useState } from "react";
 import WeatherWidget from "../../components/widget/weatherWidget";
 import Sidebar from "@/app/components/widget/sidebar";
+import Modal from "@/app/components/modal";
 export default function Dashboard() {
   const [selectedWidget, setSelectedWidget] = useState("Weather");
+  const [isOpen, setIsOpen] = useState(true)
 
   let content = <WeatherWidget />;
-  if (selectedWidget === "Weater") {
+  if (selectedWidget === "Weather") {
     content = <WeatherWidget />;
   } else if (selectedWidget === "Stonks") {
     content = <div className="text-[var(--background)]">Stonks</div>;
@@ -16,9 +18,16 @@ export default function Dashboard() {
     content = <WeatherWidget />;
   }
 
+  const closeModal = () => {
+      setIsOpen(false)
+    }
+
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="flex min-h-screen p-8">
+        <Modal isOpen={isOpen} onClose={closeModal}>
+          <p className="text-[var(--background)]">You have to accept the terms!?</p>
+        </Modal>
         <Sidebar
           selectedWidget={selectedWidget}
           setSelectedWidget={setSelectedWidget}
