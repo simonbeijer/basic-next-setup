@@ -28,7 +28,7 @@ export default function WeatherWidget() {
 
   return (
     <WidgetWrapper>
-      {loading ?  <Spinner /> : (
+      {loading || !weatherData ?  <Spinner /> : (
         <div>
           <p>{weatherData.location.name}</p>
           <p>{weatherData.current.temp_c} °C</p>
