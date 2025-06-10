@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import Home from './app/page'; // Corrected path, assuming __tests__ is in root
+
+import Home from '../src/app/page'; // Adjust the import path as necessary
 
 describe('Home Page', () => {
   it('renders a Login button', () => {
