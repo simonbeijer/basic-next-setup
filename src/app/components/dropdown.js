@@ -31,7 +31,7 @@ export default function Dropdown({ user, logoutUser }) {
           <>
             <p>{user.name}</p>
             <button
-              className="text-[var(--grey)] font-bold"
+              className="text-grey font-bold"
               onClick={logoutUser}
             >
               Logout

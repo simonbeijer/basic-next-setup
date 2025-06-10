@@ -15,9 +15,9 @@ export default function Sidebar({ selectedWidget, setSelectedWidget }) {
           <li key={index} className="m-4">
             <button
               onClick={() => setWidgetItem(index)}
-              className={`bg-slate-400 p-2 min-w-full rounded ${
-
-              item === selectedWidget ? "font-bold bg-slate-600" : ""}`}
+              className={` p-2 min-w-full rounded ${
+                item === selectedWidget ? "font-bold bg-primary" : "bg-secondary"
+              }`}
             >
               {item}
             </button>
