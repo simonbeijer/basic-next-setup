@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Next.js Fullstack Template
+This template sets up a Next.js app with a PostgreSQL database, using Prisma to manage data. It uses Docker for easy setup, Jest for testing, Cypress for end-to-end tests, and Tailwind CSS for styling.
 
-## Getting Started
+Get Started
+You'll need Node.js (v18+), npm, and Docker.
 
-First, run the development server:
+1. Set Up Environment
+Create a .env file in the main folder with your database connection.
 
-```bash
+DATABASE_URL="postgresql://simon:S1m0n@postgres:5432/basicdb"
+2. Prepare Database
+Start PostgreSQL and set up your database.
+
+Bash
+
+# Start the database
+docker compose up -d postgres
+
+# Generate Prisma client and apply changes
+npm run prisma:generate
+npx prisma migrate dev --name init
+
+# (Optional) Add starting data
+npm run seed
+3. Run the App
+Start the Next.js app.
+
+Bash
+
+# Using Docker Compose
+docker compose up nextjs
+
+# Or directly (if not using Docker for the app)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visit http://localhost:3000 in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Key Commands
+npm run dev: Start development server.
+npm run build: Build for production.
+npm run start: Start production server.
+npm test: Run unit/integration tests.
+npm run test:e2e: Run end-to-end tests.
+npm run prisma:generate: Update Prisma client.
+npm run seed: Run database seed script.
+More Info
+Next.js Docs
+Prisma Docs
+Docker Docs
+Deployment
+This project is set up for easy deployment to Vercel.
