@@ -24,6 +24,7 @@ export default function Dashboard() {
 
   return (
     <div className="w-full max-w-6xl mx-auto">
+        <p className="text-center">Dashboard</p>
       <div className="flex min-h-screen p-8">
         <Modal isOpen={isOpen} onClose={closeModal}>
           <p className="text-[var(--background)]">You have to accept the terms!?</p>
