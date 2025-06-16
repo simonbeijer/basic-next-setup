@@ -59,7 +59,7 @@ export default function Login() {
       {loading}
       <form
         onSubmit={handleSubmit}
-        className="text-[var(--background)] flex items-center justify-center flex-col"
+        className="text-background flex items-center justify-center flex-col"
       >
         {loading ? (
           <div className="h-[168px]">
@@ -97,7 +97,7 @@ export default function Login() {
         <button
           disabled={loading}
           type="submit"
-          className="bg-[var(--foreground)] px-6 py-2 rounded flex justify-center items-center"
+          className="bg-foreground px-6 py-2 rounded flex justify-center items-center"
         >
           LOGIN
         </button>

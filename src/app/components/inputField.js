@@ -3,7 +3,7 @@ export default function InputField({type, name, value, onChange, placeholder, er
 
   return (
     <div className="flex flex-col">
-      <label htmlFor={name} className="text-[var(--foreground)] pl-[2px]">
+      <label htmlFor={name} className="text-foreground pl-[2px]">
         {label}
       </label>
       <input
@@ -12,7 +12,7 @@ export default function InputField({type, name, value, onChange, placeholder, er
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`mb-4 ${error && "border-red-500"}`}
+        className={`mb-4 bg-foreground ${error && "border-red-500"}`}
       />
     </div>
   );

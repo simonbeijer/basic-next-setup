@@ -4,7 +4,7 @@ import React from "react";
 export default function TextAreaField({ name, value, onChange, placeholder, error, label }) {
   return (
     <div className="flex flex-col">
-      <label htmlFor={name} className="text-[var(--foreground)] pl-[2px]">
+      <label htmlFor={name} className="text-foreground pl-[2px]">
         {label}
       </label>
       <textarea

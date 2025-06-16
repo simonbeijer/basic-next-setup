@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,7 +11,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         grey: "var(--grey)",
-        primary: "var(--primary-color)",  
+        primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
       },
     },
