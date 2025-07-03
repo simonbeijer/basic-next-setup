@@ -11,9 +11,9 @@ export default function Dashboard() {
   if (selectedWidget === "Weather") {
     content = <WeatherWidget />;
   } else if (selectedWidget === "Stonks") {
-    content = <div className="text-background">Stonks</div>;
+    content = <div className="text-black">Stonks</div>;
   } else if (selectedWidget === "Cool shit") {
-    content = <div className="text-background">Cool shit</div>;
+    content = <div className="text-black">Cool shit</div>;
   } else {
     content = <WeatherWidget />;
   }
@@ -27,7 +27,7 @@ export default function Dashboard() {
         <p className="text-center">Dashboard</p>
       <div className="flex min-h-screen p-8">
         <Modal isOpen={isOpen} onClose={closeModal}>
-          <p className="text-background">You have to accept the terms!?</p>
+          <p className="text-black">You have to accept the terms!?</p>
         </Modal>
         <Sidebar
           selectedWidget={selectedWidget}

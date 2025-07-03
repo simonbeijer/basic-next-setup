@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useUserContext } from "../../context/userContext";
 import Spinner from "../../components/spinner";
 import InputField from "@/app/components/inputField";
+import CustomButton from "@/app/components/button";
 
 export default function Login() {
   const [test, setTest] = useState("");
@@ -59,7 +60,7 @@ export default function Login() {
       {loading}
       <form
         onSubmit={handleSubmit}
-        className="text-background flex items-center justify-center flex-col"
+        className="text-foreground flex items-center justify-center flex-col"
       >
         {loading ? (
           <div className="h-[168px]">
@@ -73,7 +74,7 @@ export default function Login() {
               value={email}
               onChange={setEmail}
               placeholder="Enter email"
-              error="error"
+              error={error}
               label="Email:"
             />
             <InputField
@@ -82,7 +83,7 @@ export default function Login() {
               value={password}
               onChange={setPassword}
               placeholder="Enter password"
-              error="error"
+              error={error}
               label="Password:"
             />
             <p
@@ -94,13 +95,7 @@ export default function Login() {
             </p>
           </div>
         )}
-        <button
-          disabled={loading}
-          type="submit"
-          className="bg-foreground px-6 py-2 rounded flex justify-center items-center"
-        >
-          LOGIN
-        </button>
+        <CustomButton callBack={handleSubmit} text="LOGIN" disabled={loading} type="submit"></CustomButton>
       </form>
     </div>
   );

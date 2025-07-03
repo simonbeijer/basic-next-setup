@@ -9,7 +9,7 @@ export default function Sidebar({ selectedWidget, setSelectedWidget }) {
   };
 
   return (
-    <aside className="w-48 bg-white shadow p-4 text-background flex items-center justify-center">
+    <aside className="w-48 bg-white shadow p-4 text-black flex items-center justify-center">
       <ul className="w-32">
         {widgetItems.map((item, index) => (
           <li key={index} className="m-4">

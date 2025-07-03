@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -9,7 +8,6 @@
 }
 
 :root {
-  /* Your existing CSS variable definitions */
   --background: #fff;
   --foreground: #000;
   --grey: #808080;
@@ -23,7 +21,7 @@
     --foreground: #fff;
     --grey: #a0a0a0;
     --primary-color: #60a5fa;
-      --secondary-color: #14b8a6;
+    --secondary-color: #14b8a6;
   }
 }
 body {

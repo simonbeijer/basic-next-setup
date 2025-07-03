@@ -12,7 +12,7 @@ export default function InputField({type, name, value, onChange, placeholder, er
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`mb-4 bg-foreground ${error && "border-red-500"}`}
+        className={`mb-4 p-0.5 bg-white text-grey border rounded border-gray-400 ${error && "border-red-500"}`}
       />
     </div>
   );
