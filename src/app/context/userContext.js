@@ -14,14 +14,14 @@ export const UserProvider = ({ children }) => {
       });
 
       if (response.ok) {
-        console.log("response OK userContext", response);
         const data = await response.json()
+        console.log('✅ User session restored:', data.user.email);
         setUser(data.user)
       } else {
-        console.log("response ERROR userContext", response);
+        console.log('ℹ️ No active user session found');
       }
     } catch (error) {
-      console.log(error);
+      console.error('❌ User fetch error:', error.message);
     }
   };
 

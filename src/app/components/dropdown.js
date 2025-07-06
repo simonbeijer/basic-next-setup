@@ -17,11 +17,14 @@ export default function Dropdown({ user, logoutUser }) {
 
   return (
     <div className="relative">
-      <button className="flex items-center" onClick={toggleDropdown}>
-        <UserCircleIcon className="h-8 w-8"></UserCircleIcon>
+      <button 
+        className="flex items-center p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200" 
+        onClick={toggleDropdown}
+      >
+        <UserCircleIcon className="h-8 w-8 text-gray-600 dark:text-gray-300"></UserCircleIcon>
       </button>
       <div
-        className={`transition-all duration-500 transform absolute right-0 mt-2 p-4 border rounded-md shadow-md text-right bg-background text-foreground ${
+        className={`transition-all duration-300 transform absolute right-0 mt-2 p-4 border rounded-lg shadow-lg text-right bg-white dark:bg-gray-800 text-foreground border-gray-200 dark:border-gray-700 min-w-[150px] ${
           isOpen
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none"
@@ -29,9 +32,9 @@ export default function Dropdown({ user, logoutUser }) {
       >
         {user ? (
           <>
-            <p>{user.name}</p>
+            <p className="text-sm font-medium mb-2">{user.name}</p>
             <button
-              className="text-grey font-bold"
+              className="text-sm text-red-600 hover:text-red-800 font-medium transition-colors duration-200"
               onClick={logoutUser}
             >
               Logout

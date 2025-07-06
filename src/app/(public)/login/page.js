@@ -18,7 +18,6 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(email, password);
 
     if (!email.match(/^\S+@\S+\.\S+$/)) {
       setLoading(false);
@@ -40,63 +39,68 @@ export default function Login() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log('✅ Login successful for user:', data.user.email);
         setUser(data.user);
-        console.log("LOGIN REPONSE", response);
         router.push("/dashboard");
       } else {
+        console.error('❌ Login failed:', response.status);
         setError(true);
-        console.log("error login");
       }
     } catch (error) {
+      console.error('❌ Login error:', error.message);
       setError(true);
-      console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen flex-col">
-      {loading}
-      <form
-        onSubmit={handleSubmit}
-        className="text-foreground flex items-center justify-center flex-col"
-      >
-        {loading ? (
-          <div className="h-[168px]">
-            <Spinner />
-          </div>
-        ) : (
-          <div className="flex items-center justify-center flex-col">
-            <InputField
-              name="email"
-              type="email"
-              value={email}
-              onChange={setEmail}
-              placeholder="Enter email"
-              error={error}
-              label="Email:"
-            />
-            <InputField
-              name="password"
-              type="password"
-              value={password}
-              onChange={setPassword}
-              placeholder="Enter password"
-              error={error}
-              label="Password:"
-            />
-            <p
-              className={`text-red-400 mb-4 ${
-                error ? "visable" : "invisible"
-              } `}
-            >
-              Login failed. Please check your email and password.
-            </p>
-          </div>
-        )}
-        <CustomButton callBack={handleSubmit} text="LOGIN" disabled={loading} type="submit"></CustomButton>
-      </form>
+    <div className="flex items-center justify-center min-h-screen bg-background">
+      <div className="w-full max-w-md p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold text-center mb-6 text-foreground">Sign In</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4"
+        >
+          {loading ? (
+            <div className="flex justify-center py-8">
+              <Spinner />
+            </div>
+          ) : (
+            <>
+              <InputField
+                name="email"
+                type="email"
+                value={email}
+                onChange={setEmail}
+                placeholder="Enter your email"
+                error={error}
+                label="Email"
+              />
+              <InputField
+                name="password"
+                type="password"
+                value={password}
+                onChange={setPassword}
+                placeholder="Enter your password"
+                error={error}
+                label="Password"
+              />
+              {error && (
+                <p className="text-red-500 text-sm text-center">
+                  Login failed. Please check your email and password.
+                </p>
+              )}
+              <CustomButton 
+                callBack={handleSubmit} 
+                text="Sign In" 
+                disabled={loading} 
+                type="submit"
+              />
+            </>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

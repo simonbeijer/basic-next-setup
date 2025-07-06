@@ -1,22 +1,24 @@
 "use client";
 export default function Sidebar({ selectedWidget, setSelectedWidget }) {
-  const widgetItems = ["Weather", "Stonks", "Cool shit"];
+  const widgetItems = ["Weather", "Analytics", "Dashboard"];
 
   const setWidgetItem = (index) => {
     let newItem = widgetItems[index];
     setSelectedWidget(newItem);
-    console.log(selectedWidget);
   };
 
   return (
-    <aside className="w-48 bg-white shadow p-4 text-black flex items-center justify-center">
-      <ul className="w-32">
+    <aside className="w-64 bg-white dark:bg-gray-800 shadow-lg p-6 border-r border-gray-200 dark:border-gray-700">
+      <h3 className="text-lg font-semibold text-foreground mb-6">Dashboard</h3>
+      <ul className="space-y-2">
         {widgetItems.map((item, index) => (
-          <li key={index} className="m-4">
+          <li key={index}>
             <button
               onClick={() => setWidgetItem(index)}
-              className={` p-2 min-w-full rounded ${
-                item === selectedWidget ? "font-bold bg-primary" : "bg-secondary"
+              className={`w-full p-3 text-left rounded-lg transition-all duration-200 ${
+                item === selectedWidget 
+                  ? "bg-primary text-white font-medium shadow-md" 
+                  : "bg-gray-50 dark:bg-gray-700 text-foreground hover:bg-gray-100 dark:hover:bg-gray-600"
               }`}
             >
               {item}
