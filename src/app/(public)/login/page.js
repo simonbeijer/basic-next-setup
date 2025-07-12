@@ -7,7 +7,6 @@ import InputField from "@/app/components/inputField";
 import CustomButton from "@/app/components/button";
 
 export default function Login() {
-  const [test, setTest] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -39,7 +38,8 @@ export default function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('✅ Login successful for user:', data.user.email);
+        console.log('🎉 Login successful for user:', data.user.email);
+        console.log('🚀 Redirecting to dashboard...');
         setUser(data.user);
         router.push("/dashboard");
       } else {

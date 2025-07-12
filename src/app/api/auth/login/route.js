@@ -56,7 +56,7 @@ export async function POST(request) {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { message: "broken all together" },
+      { message: "Something went wrong! 😅" },
       { status: 500 }
     );
   }

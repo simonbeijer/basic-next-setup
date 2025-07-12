@@ -1,41 +1,36 @@
 "use client";
 import { useState } from "react";
-import WeatherWidget from "../../components/widget/weatherWidget";
-import Sidebar from "@/app/components/widget/sidebar";
 import Modal from "@/app/components/modal";
-export default function Dashboard() {
-  const [selectedWidget, setSelectedWidget] = useState("Weather");
-  const [isOpen, setIsOpen] = useState(true)
 
-  let content = <WeatherWidget />;
-  if (selectedWidget === "Weather") {
-    content = <WeatherWidget />;
-  } else if (selectedWidget === "Stonks") {
-    content = <div className="text-black">Stonks</div>;
-  } else if (selectedWidget === "Cool shit") {
-    content = <div className="text-black">Cool shit</div>;
-  } else {
-    content = <WeatherWidget />;
-  }
+export default function Dashboard() {
+  const [isOpen, setIsOpen] = useState(true);
 
   const closeModal = () => {
-      setIsOpen(false)
-    }
+    setIsOpen(false);
+  };
 
   return (
     <div className="w-full max-w-6xl mx-auto">
-        <p className="text-center">Dashboard</p>
       <div className="flex min-h-screen p-8">
         <Modal isOpen={isOpen} onClose={closeModal}>
-          <p className="text-black">You have to accept the terms!?</p>
+          <p className="text-black">Welcome to your dashboard! 🎉</p>
         </Modal>
-        <Sidebar
-          selectedWidget={selectedWidget}
-          setSelectedWidget={setSelectedWidget}
-        />
         <div className="flex flex-1 items-center justify-center bg-gray-100">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-            {content}
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+              Dashboard 📊
+            </h1>
+            <p className="text-lg text-gray-600 mb-8">
+              Welcome to your clean template! 🚀
+            </p>
+            <div className="bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                Ready to build something amazing? ✨
+              </h2>
+              <p className="text-gray-600">
+                This is your starting point. Add your own features and make it yours! 💪
+              </p>
+            </div>
           </div>
         </div>
       </div>
