@@ -1,20 +1,25 @@
 "use client";
-import { useState } from "react";
-import Modal from "@/app/components/modal";
+import { useState, useEffect } from "react";
+import TermsModal from "@/app/components/termsModal";
 
 export default function Dashboard() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
-  const closeModal = () => {
-    setIsOpen(false);
+  useEffect(() => {
+    const termsAccepted = localStorage.getItem('personal-letter-llm-terms-accepted');
+    if (!termsAccepted) {
+      setShowTermsModal(true);
+    }
+  }, []);
+
+  const closeTermsModal = () => {
+    setShowTermsModal(false);
   };
 
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="flex min-h-screen p-8">
-        <Modal isOpen={isOpen} onClose={closeModal}>
-          <p className="text-black">Welcome to your dashboard! 🎉</p>
-        </Modal>
+        <TermsModal isOpen={showTermsModal} onClose={closeTermsModal} />
         <div className="flex flex-1 items-center justify-center bg-gray-100">
           <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">
