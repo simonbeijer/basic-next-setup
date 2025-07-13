@@ -4,7 +4,7 @@ import React from "react";
 export default function TextAreaField({ name, value, onChange, placeholder, error, label }) {
   return (
     <div className="flex flex-col">
-      <label htmlFor={name} className="text-foreground pl-[2px]">
+      <label htmlFor={name} className="block text-sm font-medium text-foreground mb-2">
         {label}
       </label>
       <textarea
@@ -12,7 +12,7 @@ export default function TextAreaField({ name, value, onChange, placeholder, erro
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`mb-4 p-2 border rounded ${error ? "border-red-500" : "border-gray-300"}`}
+        className={`w-full px-4 py-3 border rounded-lg bg-gray-50 dark:bg-gray-700 text-foreground placeholder-grey transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary ${error ? "border-red-500" : "border-grey"}`}
         rows={4}
       />
     </div>

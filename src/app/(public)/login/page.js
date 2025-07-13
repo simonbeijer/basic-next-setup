@@ -55,11 +55,11 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="w-full max-w-sm mx-4 p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+    <div className="flex items-center justify-center min-h-screen bg-background">
+      <div className="w-full max-w-sm mx-4 p-8 bg-background rounded-2xl shadow-lg border border-grey">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Welcome Back</h2>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Sign in to your account to continue</p>
+          <h2 className="text-2xl font-semibold text-foreground mb-2">Welcome Back</h2>
+          <p className="text-sm text-grey">Sign in to your account to continue</p>
         </div>
         <form
           onSubmit={handleSubmit}
