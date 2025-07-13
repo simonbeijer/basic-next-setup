@@ -30,7 +30,7 @@
 ```js
 // Available theme tokens in Tailwind (from tailwind.config.js):
 colors: {
-  background: "var(--background)",    // Auto switches: #fff → #000
+  background: "var(--background)",    // Auto switches: #fff → #262626 (dark grey)
   foreground: "var(--foreground)",    // Auto switches: #000 → #fff  
   grey: "var(--grey)",                // Auto switches: #808080 → #a0a0a0
   primary: "var(--primary-color)",    // Auto switches: #3b82f6 → #60a5fa
