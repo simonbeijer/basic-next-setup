@@ -10,7 +10,7 @@ export default function ConditionalFooter() {
   }
 
   return (
-    <footer className="flex justify-center items-center h-12 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 mt-auto">
+    <footer className="flex justify-center items-center h-12 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto">
       <p className="text-sm text-gray-600 dark:text-gray-400">© 2025 Template App</p>
     </footer>
   );

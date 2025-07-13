@@ -18,23 +18,15 @@ export default function Dashboard() {
     setShowTermsModal(false);
   };
 
-  const getUserInitials = (name) => {
-    if (!name) return 'JD';
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
-  };
-
-  const formatMemberSince = () => {
-    return 'January 2024';
-  };
 
   return (
     <div className="h-[calc(100vh-3rem)] bg-gray-50 flex flex-col overflow-hidden">
-      <TermsModal isOpen={showTermsModal} onClose={closeTermsModal} />
+      <TermsModal isOpen={showTermsModal} onClose={closeTermsModal} showClose={false} />
       
       <div className="flex-1 w-full max-w-4xl mx-auto p-4">
         <div className="mb-4">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back!</h1>
-          <p className="text-gray-600">Here's your user information and dashboard overview.</p>
+          <p className="text-gray-600">Here&apos;s your user information and dashboard overview.</p>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
@@ -47,7 +39,7 @@ export default function Dashboard() {
 
           <div className="flex items-start gap-6 mb-6">
             <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-semibold text-lg">
-              {getUserInitials(user?.name)}
+              JD
             </div>
             <div className="flex flex-col gap-2">
               <h3 className="text-xl font-semibold text-gray-900">{user?.name || 'John Doe'}</h3>
@@ -86,7 +78,7 @@ export default function Dashboard() {
                 </svg>
                 <span className="font-semibold text-gray-900">Member Since</span>
               </div>
-              <p className="text-gray-700">{formatMemberSince()}</p>
+              <p className="text-gray-700">January 2024</p>
             </div>
           </div>
         </div>

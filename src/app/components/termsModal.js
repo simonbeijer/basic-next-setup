@@ -61,7 +61,7 @@ export default function TermsModal({ isOpen, onClose, showClose = true }) {
               type="checkbox"
               checked={termsAccepted}
               onChange={(e) => setTermsAccepted(e.target.checked)}
-              className="mt-1 w-4 h-4 text-gray-600 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-gray-500 focus:ring-2"
+              className="mt-1 w-4 h-4 text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-500 rounded focus:ring-gray-500 dark:focus:ring-gray-400 focus:ring-2"
             />
             <span className="text-sm text-gray-900 dark:text-gray-100">
               I agree to the Terms of Service and acknowledge that this is an experimental AI tool. 
@@ -74,7 +74,7 @@ export default function TermsModal({ isOpen, onClose, showClose = true }) {
               type="checkbox"
               checked={gdprAccepted}
               onChange={(e) => setGdprAccepted(e.target.checked)}
-              className="mt-1 w-4 h-4 text-gray-600 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-gray-500 focus:ring-2"
+              className="mt-1 w-4 h-4 text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-500 rounded focus:ring-gray-500 dark:focus:ring-gray-400 focus:ring-2"
             />
             <span className="text-sm text-gray-900 dark:text-gray-100">
               I consent to the processing of my data as described above and understand that my documents 
