@@ -88,6 +88,18 @@ className="w-full px-4 py-3 bg-primary hover:bg-primary/90 disabled:bg-grey dark
 
 ### Form Element Patterns
 
+**Text Input Fields (Primary Pattern):**
+```js
+// Label styling - use theme tokens
+className="block text-sm font-medium text-foreground mb-2"
+
+// Input styling - white background with dark text for readability
+className="w-full px-4 py-3 border rounded-lg bg-white dark:bg-white text-black placeholder-grey transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary border-grey"
+
+// Error state variation
+className="border-red-500" // when error prop is true
+```
+
 **Checkbox inputs:**
 ```js
 className="mt-1 w-4 h-4 text-foreground bg-background border-grey rounded focus:ring-primary focus:ring-2"
@@ -99,6 +111,14 @@ className="text-sm text-foreground"      // Primary text
 className="text-grey"                    // Secondary text
 className="text-foreground font-semibold" // Headings
 ```
+
+**Form Input Guidelines:**
+- ✅ Use white backgrounds (`bg-white dark:bg-white`) for text inputs to ensure readability
+- ✅ Use `text-black` for input text (dark text on white background in both modes)
+- ✅ Use `placeholder-grey` for consistent placeholder styling
+- ✅ Use `border-grey` for default borders, `border-red-500` for errors
+- ✅ Always include focus states with theme-aware `focus:ring-primary`
+- ⚠️ **Important:** When using white backgrounds, use `text-black` not `text-foreground` to ensure password dots and text are visible in dark mode
 
 ### Modal/Card Patterns
 
